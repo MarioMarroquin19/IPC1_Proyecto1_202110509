@@ -14,6 +14,7 @@ public class CargaMasiva extends JFrame implements ActionListener {
     String seleccionado;
     JTextArea textCarga;
     JScrollPane scrollpanel;
+    public String [] atributos;
 
     CargaMasiva(){
 
@@ -84,7 +85,7 @@ public class CargaMasiva extends JFrame implements ActionListener {
     public void cargarBiblios(String texto){
         String[] lineasTexto = texto.split("\n");
         for(String linea: lineasTexto) {
-            String[] atributos = linea.split(";"); //Cada línea se debe separar en otras sub cadenas para obtener los atributos separados por("-")
+            atributos = linea.split(";"); //Cada línea se debe separar en otras sub cadenas para obtener los atributos separados por("-")
     
             if(atributos.length  == 11) { //Las cadénas válidas de acuerdo con la entrada del usuario, deben contener 9 atributos separados por("-")
     
@@ -145,9 +146,11 @@ public class CargaMasiva extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "<html><body>Error al cargar, asegurese de ingresar <br> de forma correcta los datos </body></html>", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
           }
+          if(atributos.length  == 11){
           JOptionPane.showMessageDialog(null, "Carga completa!", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
           setVisible(false);
           CrearBiblio JFrame = new CrearBiblio();
+          }
         }
 
 
